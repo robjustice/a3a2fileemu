@@ -1,4 +1,4 @@
-# A3A2FILEEMU
+# Apple3 file based Apple2 Emulation Launcher
 This idea started with some thoughts on how to get the Fujinet Config program running easily on the Apple ///. The Fujinet config program is written in C and compiled using CC65. The issue with running this on the A3, is there are no native CC65 libraries available yet for the A3.
 
 The idea I thought about was to create a ProDOS disk with a file based Apple2 emulation launcher. This would setup the A2 emulation environment on the A3 and then bootup ProDOS. We don't have any Language card available on the stock A3, so the only ProDOS available that supports 48k is the original ProDOS 1.0. 48k ProDOS 1.0 loads its Kernel from address $9000 up, so this will limit the memory available for programs. Perhaps anther option is to modify the relocation code to move it to one of the spare A3 memory banks, but that's another rabbit hole.
@@ -42,22 +42,29 @@ There are two options for building, a simple Makefile, or for Windows, the winma
 ## Pre Built Disks
 In the disks folder, the following are provided:
 - prodos.po
+  
   Includes the updated bootloader, ProDOS 1.0.2 Kernel file, and the A2emu SOS.KERNEL file
   Just replace the bitsy.system with your xx.system file
   
 - prodos_with_loader.po
+  
   Includes the updated bootloader, ProDOS 1.0.2 Kernel file, and the A2emu SOS.KERNEL file
   This also includes the modified CC65 loader.system file
   Just add your cc65 program and rename the 'loader' name to match your program
 
 - loader.system
+  
   This is the modifed loader.system file with the buffer address adjusted for 48k ProDOS
 
 - grafex_example.po
+  
   This is an example disk with a CC65 program with a demo for the Grafex card. This was to show how the same program can be run on both environments easily. Its only using simple text output for menus, and then driving the card directly via the slot IO.
+  
   This disk can be booted in MAME with the grafex card in slot 1.
   example:
+   ```
    mame apple2ee -window -sl1 grafex -flop1 grafex_eample.po
    mame apple2ee -window -sl1 grafex -sl7 cffa2 -hard1 grafex_eample.po
    mame apple3 -window -sl1 grafex -flop1 grafex_eample.po
    mame apple3 -window -sl1 grafex -sl4 cffa2 -hard1 grafex_eample.po -bios 1
+   ```
