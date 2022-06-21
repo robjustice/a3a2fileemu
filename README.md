@@ -14,7 +14,9 @@ There are two parts to this:
 1. Bootloader
 
 This is taken from soshdboot, with some updates/enhancements. It uses the ProDOS/SOS two block dual boot setup.
+
 On an Apple2, the boot loader will load the PRODOS kernel file from either floppy or a Prodos Block mode device
+
 On an Apple3, The boot loader will load the SOS.KERNEL file from either floppy or a Prodos Block mode device(with soshdboot rom)
 
 2. File based Emulation Launcher
@@ -60,7 +62,7 @@ In the disks folder, the following are provided:
 
 - grafex_example.po
   
-  This is an example disk with a CC65 program with a demo for the Grafex card. This was to show how the same program can be run on both environments easily. Its only using simple text output for menus, and then driving the card directly via the slot IO.
+  This is an example disk with a CC65 program with a demo for the Grafex card. This was to show how the same program on one disk can be run on both environments easily. Its only using simple text output for menus, and then driving the card directly via the slot IO.
   
   This disk can be booted in MAME with the grafex card in slot 1.
   example:
