@@ -38,7 +38,7 @@
 ; Note1: Setting funny/Satan mode patches the A2 F8 rom to set the A3 B/W Text mode correctly
 ; Note2: Funny/Satan mode also allows us to come back to Native A3 mode without a power on/off
 ;
-a2mode = 1
+a2mode = 0
 
 ; Set slot search order in f8 rom
 ; 0 = slot 7 to 1
