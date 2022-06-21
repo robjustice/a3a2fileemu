@@ -12,11 +12,13 @@ Not too sure how much other use this setup will be, and its expanded a bit from 
 ## Details
 There are two parts to this:
 1. Bootloader
+
 This is taken from soshdboot, with some updates/enhancements. It uses the ProDOS/SOS two block dual boot setup.
 On an Apple2, the boot loader will load the PRODOS kernel file from either floppy or a Prodos Block mode device
 On an Apple3, The boot loader will load the SOS.KERNEL file from either floppy or a Prodos Block mode device(with soshdboot rom)
 
 2. File based Emulation Launcher
+
 This is a file based loader for setting up the emulation environment, it is placed on the disk and named SOS.KERNEL.
 
 Performs the following:
