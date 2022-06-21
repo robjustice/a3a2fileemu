@@ -16,10 +16,6 @@
 ; - Setup - bank=0, zeropage=0, 1Mhz, enable Titan ///+II if installed (gives language card) 
 ; - jump to the Apple2 reset entry point
 ;
-; Note:
-; - this leaves the A3 in Funny/Satan mode (to allow possibility to boot back to A3 mode)
-; - monitor rom has been modifed to set the A3 B/W Text mode correctly
-; 
 ; todo 
 ; - update the included monitor rom to not clash with the VIAs
 ;
