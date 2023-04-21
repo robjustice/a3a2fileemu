@@ -131,11 +131,11 @@ A2RESET     =       $fa62
             sta     $03f2
             lda     #$00
             sta     $03f4
-            lda     $c100        ;enable ///+II card (if its there, any slot)
-            lda     $c200
-            lda     $c300
-            lda     $c400
-            lda     $c084
+;            lda     $c100        ;enable ///+II card (if its there, any slot)
+;            lda     $c200
+;            lda     $c300
+;            lda     $c400
+;            lda     $c084
             jmp     A2RESET      ;jmp A2 reset 
 
 
