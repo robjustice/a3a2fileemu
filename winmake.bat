@@ -58,7 +58,7 @@ java -jar %AC% -d %OUTPUTDISK1% SOS.KERNEL
 java -jar %AC% -p %OUTPUTDISK1% SOS.KERNEL SYS $1E00 < out/a3a2fileemu.bin
 java -jar %AC% -d %OUTPUTDISK2% SOS.KERNEL
 java -jar %AC% -p %OUTPUTDISK2% SOS.KERNEL SYS $1E00 < out/a3a2fileemu.bin
-java -jar %AC% -d %OUTPUTDISK3% SOS.KERNEL
-java -jar %AC% -p %OUTPUTDISK3% SOS.KERNEL SYS $1E00 < out/a3a2fileemu.bin
+java -jar %AC% -d %OUTPUTDISK3% A3A2FILEEMU
+java -jar %AC% -p %OUTPUTDISK3% A3A2FILEEMU SYS $1E00 < out/a3a2fileemu.bin
 goto :EOF
 

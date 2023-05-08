@@ -91,17 +91,7 @@ entry:          sec                                    ;(apple iii enters xboot 
                 inc          blok                      ;read block 1.
                 jmp          (dent)                    ;using Prodos block mode card
 
-apple2:         ldy          $fb1e                     ;are we running a2 emulation on an a3?
-                cpy          #$8a
-                bne          prodos                    ;no, and go load file PRODOS (Prodos 2.4.2)
-                ldy          #'1'                      ;else, add a '1' to filename
-                sty          sysname+7                 ;file PRODOS1 (Prodos 1.0.2)
-                ldy          #$27                      ;update name length
-                sty          sysname
-
-				nop                                    ;padding byte to get the length right        
-
-prodos:         stx          unit                      ;save unit number.
+apple2:         stx          unit                      ;save unit number.
                 cmp          #$03                      ;for disk ii.
                 php                                    ;save result, it may be irrelevent.
                 txa                                    ;find out if disk ii.
@@ -232,14 +222,18 @@ bterr2:         bcs          booterr
                 ora          (idxl),y                  ;if both=0 then done.
                 bne          rdkernl                   ;branch if more to read.
 
-                jmp          kernel                    ;go execute kernel code.
+                lda          #$00                      ;set HIMEM for CC65
+				sta          $73
+                lda          #$c0
+				sta          $74
+				jmp          kernel                    ;go execute kernel code.
 
 nopro           =            *
 booterr         =            *
                 jmp          quitmes
 
-sysname:        .byte        $26
-                .byte        "PRODOS         "
+sysname:        .byte        $2d
+                .byte        "CONFIG.SYSTEM  "
 
 goread:         lda          iobuff
                 sta          buff
@@ -269,7 +263,7 @@ prmess:         lda          errmess,y
 hang:           jmp          hang
 ;
 meslen          =            26
-errmess:        ascmsbon     "* UNABLE TO LOAD PRODOS * "
+errmess:        ascmsbon     "* UNABLE TO LOAD CONFIG * "
 
 
 setphase:       lda          curtrk                    ;get current track
@@ -362,8 +356,12 @@ rddata:         php                                    ;carry set if reading sec
 rd0:            dey                                    ;every time y=0 decrement find count.
                 beq          tryread
 
+firstend        =            *
+
+                .res         $a00-firstend,0
                 
                 .segment "DATA2"
+
 
 zzstart         =            *
 ; from zzstart to zzend code is moved from
@@ -575,7 +573,7 @@ bootinfo        =            *
 asmbase         =            *                         ;assembly base address
 runbase         =            $a000                     ;execution base address
                 jmp          boot+runbase-asmbase
-;                .byte        "SOSBOOT 2blk.2"  ; sos boot identification "stamp"
+;                .byte        "SOSBOOT2blk.2"  ; sos boot identification "stamp"
 
 ;*******************************************************************
 ;*
@@ -583,8 +581,8 @@ runbase         =            $a000                     ;execution base address
 ;*
 ;*******************************************************************
 
-namlen:         .byte        10
-name:           .byte        "SOS.KERNEL"    ;removed 5 trailing spaces to save space
+namlen:         .byte        7
+name:           .byte        "A3A2EMU    "
 name2:          .byte        "SOS KRNL"
 name2_len       =            *-name2
 ;
