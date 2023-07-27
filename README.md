@@ -67,8 +67,8 @@ In the disks folder, the following are provided:
   This disk can be booted in MAME with the grafex card in slot 1.
   example:
    ```
-   mame apple2ee -window -sl1 grafex -flop1 grafex_eample.po
-   mame apple2ee -window -sl1 grafex -sl7 cffa2 -hard1 grafex_eample.po
-   mame apple3 -window -sl1 grafex -flop1 grafex_eample.po
-   mame apple3 -window -sl1 grafex -sl4 cffa2 -hard1 grafex_eample.po -bios 1
+   mame apple2ee -window -sl1 grafex -flop1 grafex_example.po
+   mame apple2ee -window -sl1 grafex -sl7 cffa2 -hard1 grafex_example.po
+   mame apple3 -window -sl1 grafex -flop1 grafex_example.po
+   mame apple3 -window -sl1 grafex -sl4 cffa2 -hard1 grafex_example.po -bios 1
    ```
