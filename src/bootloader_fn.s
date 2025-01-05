@@ -82,6 +82,7 @@ entry:          sec                                    ;(apple iii enters xboot 
                 bcs          apple2                    ;branch if not apple iii native mode.
 
                                                        ;else load SOS boot block
+                lda          $c0d5                     ;disable internal drive to stop softsp starting it
                 lda          #$9f                      ;the return address is $a000
                 pha
                 lda          #$ff
@@ -582,7 +583,7 @@ runbase         =            $a000                     ;execution base address
 ;*******************************************************************
 
 namlen:         .byte        7
-name:           .byte        "A3A2EMU    "
+name:           .byte        "A3A2EMU"
 name2:          .byte        "SOS KRNL"
 name2_len       =            *-name2
 ;
@@ -638,6 +639,7 @@ boot:           sei
                 bit          kybdstrb                  ; turns off kybd
                 lda          #$40                      ; "rti" instruction
                 sta          $ffca                     ; prevents reboot w/keyboard nmi
+                lda          $c0d5                     ; disable internal drive to stop softsp starting it
 ;
 ; find highest memory bank in system and set bank reg to it
 ; - max memsize = 512k. (support OnThree 512k memory card)
